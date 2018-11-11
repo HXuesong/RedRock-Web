@@ -1,0 +1,491 @@
+body {
+    margin: 0px;
+    background-color: #e5f5f4;
+}
+
+a {
+    text-decoration:none;
+}
+
+.orange {
+    color: #f47c53 !important;
+}
+
+.space {
+    width: 8px;
+    height: auto;
+}
+
+/* 
+flex-direction属性决定主轴的方向（即项目的排列方向）。
+.box {
+  flex-direction: row | row-reverse | column | column-reverse;
+}
+row（默认值）：主轴为水平方向，起点在左端。
+row-reverse：主轴为水平方向，起点在右端。
+column：主轴为垂直方向，起点在上沿。
+column-reverse：主轴为垂直方向，起点在下沿。
+ */
+.top > .topbox {
+    display:flex;
+    flex-direction: row; /*元素以水平排列*/
+    justify-content: space-between;
+    /* 规定顶部总大小 */
+    width: 1000px; 
+    /* 居中对齐 */
+    margin-left:auto;
+    margin-right: auto; 
+}
+.top > .topbox > .topboxleft {
+    display:flex;
+    flex-direction: row; /*元素以水平排列*/
+}
+.top > .topbox > .topboxleft > .img {
+    /* 规定容器大小 */
+    width: 95px;
+    height: 54px;
+    background-image: url('../images/icon.png');
+    margin-top: 9px;
+    /* 填充方式 
+        https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Scaling_background_images
+        contain 值指定可以不用考虑容器的大小，把图像扩展至最大尺寸 ------> 存在重复的问题
+        cover 属性指定背景图可以被调整到任意大小，以使背景图完全覆盖背景区域。
+        还可以直接输入数字px
+    */
+    /* 规定图片大小 */
+    background-size: contain;
+    /* 不重复 */
+    background-repeat: no-repeat;
+}
+
+.top > .topbox > .topboxleft > .searchbox {
+    /* 设定整个搜索框大小 */
+    width: 274px;
+    /* 确定位置 */
+    margin-top: 19px;
+    margin-left: 15px;
+    /* 规定排列方式为竖向 */
+    display:flex;
+    flex-direction: column;
+}
+
+.top > .topbox > .topboxleft > .searchbox > .search {
+    /* 搜索框背景 */
+    border-radius: 4px;
+    background-color: rgb(46, 171, 142);
+    width: 274px;
+    height: 24px;
+    /* 对position的理解
+        relative 会占据空间
+        absolute 不会占据空间
+    */
+    position: relative;
+}
+
+/* 使用雪碧（Sprites）图
+
+.top > .topbox > .topboxleft > .searchbox > .search > .sicon{
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 14px;
+    height: 14px;
+  
+        下面两行相当于：
+        float: right;
+        margin-right: 11px;
+    position: absolute;
+    right: 11px;
+    top: 5px;
+} */
+
+
+.top > .topbox > .topboxleft > .searchbox > .search > .searchinput {
+    /* 覆盖默认的边框 */
+    border: 1px solid transparent; 
+    /* 覆盖点击之后的样式 */
+    outline: none;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    /* 使用内边距使文字好看 */
+    padding: 5px;
+    box-sizing: border-box;
+    width: 238px;
+    height: 22px;
+    /* 圆角顺序 ↖ ↗ ↘ ↙ 顺时针方向*/
+    border-radius: 4px 0px 0px 4px;
+}
+
+.top > .topbox > .topboxleft > .searchbox > .searchtext {
+    /* 符合  display:flex;flex-direction: column; */
+    position: relative;
+    margin-left:5px;
+    font-size: 11px;
+    margin-top: 7px; 
+}
+
+.top > .topbox > .topboxleft > .searchbox > .searchtext a {
+    color: #bfbfbf;
+}
+
+#kf::after {
+    content: ' |';
+}
+#bbs::after {
+    content: ' |';
+}
+
+.top > .topbox > .toprighttext {
+    position: relative;
+    right: 0px;
+    width: auto;
+    height: 16px;
+    margin-top: 28px;
+    /* 地点与登陆竖排 */
+    display:flex;
+    flex-direction: column;
+}
+
+.top > .topbox > .toprighttext > .up {
+    /* 图标与文字横排 */
+    display:flex;
+    flex-direction: row;
+    /* 中轴线对齐 */
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* .top > .topbox > .toprighttext > .up > .place {
+    width: 7px;
+    height: 9px;
+    background-image: url('../images/place.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+} */
+
+.top > .topbox > .toprighttext > .up  > .placename {
+    margin-left: 4px;
+    font-size: 8px;
+}
+
+.top > .topbox > .toprighttext > .down {
+    margin-top: 7px;
+    display:flex;
+    flex-direction: row;
+}
+
+.top > .topbox > .toprighttext > .down > .text {
+    color: black;
+    font-size: 12px;
+    margin-left: 7px;
+}
+
+
+.nav {
+    width: 100%;
+    background-color: #2eab8e;
+    height: 44px;
+    margin-top: 8px;
+}
+
+.nav > .contents {
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 1000px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav > .contents > .text {
+    font-size: 20px;
+    height: 100%;
+    display:flex;
+    /* 中轴线对齐 */
+    justify-content: center;
+    align-items: center;
+    width: 102px;
+}
+.nav > .contents > .text a {
+    color: #fff;
+}
+
+.nav > .contents > .text:hover {
+    background-color: #0b696f;
+}
+/* 
+#wallpaper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+} */
+/* 最困难之处 */
+.middle {
+    background-image: url('../images/banner.png');
+    background-position-y: center;
+    background-size: cover;
+    /* 使用计算将100vh的视窗高度-nav&footer的高度 */
+    height: calc(100vh - 118px - 116px);
+    justify-content: center;
+}
+.middle > .contents {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.middle > .none {
+    height: 54px;
+}
+
+.middle > .contents > .chose {
+    width: 412px;
+    height: 338px;
+    display:flex;
+    box-shadow: 2px 3px 15px rgba(0, 0, 0, .5);
+}
+
+.middle > .contents > .chose > .left {
+    box-sizing: border-box;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-right-width: 1px;
+    width: 102px;
+    height: 100%;
+    background-color: #84ccc9;
+    display:flex;
+    flex-direction: column;
+}
+
+.middle > .contents > .chose > .left > .text {
+    box-sizing: border-box;
+    display:flex;
+    /* 中轴线对齐 */
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border-bottom-style: solid;
+    border-bottom-color: #ffffff;
+    border-bottom-width: 1px;
+}
+.middle > .contents > .chose > .left > .text:hover {
+    background-color: #3dbdb0;
+}
+
+.middle > .contents > .chose > .left > .text a {
+    color: #ffffff;
+}
+
+.middle > .contents > .chose > .right {
+    display:flex;
+    flex-direction: column;
+    width: 310px;
+    background-color: #ffffff;
+}
+
+.middle > .contents > .chose > .right > .top {
+    margin-top: 15px;
+    width: 279px;
+    margin-left: auto;
+    margin-right: auto;
+    display:flex;
+    justify-content: space-between;
+}
+
+.middle > .contents > .chose > .right > .divide {
+    background-color: #0a6678;
+    height: 2px;
+    width: 279px;
+    margin-top: 14px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.middle > .contents > .chose > .right > .top > .text.chosed {
+    color: #0a6678;
+}
+.middle > .contents > .chose > .right > .input {
+    margin-top: 13px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 279px;
+}
+
+.name {
+    font-size: 10px;
+}
+
+.city > .input {
+    margin-top: 5px;
+    font-size: 10px;
+    width: 279px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid;
+    border-color: #eeeeee;
+    outline: none;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    height: 20px;
+}
+
+.others {
+    display:flex;
+    flex-wrap: wrap;
+}
+.other {
+    margin-top: 16px;
+}
+.other > .input {
+    margin-top: 5px;
+    font-size: 10px;
+    width: 108px;
+    border: 1px solid;
+    border-color: #eeeeee;
+    outline: none;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    height: 19px;
+    margin-right: 31.5px;
+}
+
+.searchbutton {
+    font-size: 15px;
+    color: #ffffff;
+    display:flex;
+    /* 中轴线对齐 */
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    margin-left: 207px;
+    width: 82px;
+    height: 29px;
+    border-radius: 5px;
+    background-color: #f47c53;
+}
+
+.footer {
+    box-sizing: border-box;
+    padding-top:  16px;
+    width: 100%;
+    height: 116px;
+    background-color: #0f6f5c;
+    text-align: center;
+}
+
+.footertext p {
+    color: #eee;
+    font-size: 12px;
+    margin: 0px 5px;
+}
+
+/* 使用 雪碧图
+
+#zs {
+    background-image: url('../images/hotel.png');
+    width: 16px;
+    height: 16px;
+    background-size: 16px 16px;
+    margin-right: 6px;
+}
+
+
+#jp {
+    background-image: url('../images/plane.png');
+    width: 16px;
+    height: 16px;
+    background-size: 16px 16px;
+    margin-right: 6px;
+}
+
+
+#ly {
+    background-image: url('../images/travel.png');
+    width: 16px;
+    height: 16px;
+    background-size: 16px 16px;
+    margin-right: 6px;
+}
+
+
+#mp {
+    background-image: url('../images/ticket.png');
+    width: 16px;
+    height: 16px;
+    background-size: 16px 16px;
+    margin-right: 6px;
+} */
+
+/* glue: 0.13 hash: f3dd1a985c */
+.sprite-images-plane,
+.sprite-images-travel,
+.sprite-images-ticket,
+.sprite-images-search,
+.sprite-images-hotel,
+.sprite-images-place {
+            background-image: url('../images/images.png');
+            background-repeat: no-repeat;
+        }
+        
+        .sprite-images-plane {
+            background-position: 0 0;
+            width: 18px;
+            height: 16px;
+            margin-right: 6px;
+        }
+        
+        .sprite-images-travel {
+            background-position: 0 -16px;
+            width: 17px;
+            height: 17px;
+            margin-right: 6px;
+        }
+        
+        .sprite-images-ticket {
+            background-position: -18px 0;
+            width: 16px;
+            height: 14px;
+            margin-right: 6px;
+        }
+        
+        .sprite-images-search {
+            background-position: -18px -14px;
+            width: 14px;
+            height: 14px;
+            position: absolute;
+            right: 11px;
+            top: 5px;
+        }
+        
+        .sprite-images-hotel {
+            background-position: -34px 0;
+            width: 12px;
+            height: 14px;
+            margin-right: 6px;
+        }
+        
+        .sprite-images-place {
+            background-position: -34px -14px;
+            width: 7px;
+            height: 9px;
+            margin-right: 6px;
+        }
+        
+        @media screen and (-webkit-min-device-pixel-ratio: 1.0), screen and (min--moz-device-pixel-ratio: 1.0), screen and (-o-min-device-pixel-ratio: 100/100), screen and (min-device-pixel-ratio: 1.0), screen and (min-resolution: 1.0dppx) {
+            .sprite-images-plane,
+    .sprite-images-travel,
+    .sprite-images-ticket,
+    .sprite-images-search,
+    .sprite-images-hotel,
+    .sprite-images-place {
+                background-image: url('../images/images.png');
+                -webkit-background-size: 46px 33px;
+                -moz-background-size: 46px 33px;
+                background-size: 46px 33px;
+            }
+        }

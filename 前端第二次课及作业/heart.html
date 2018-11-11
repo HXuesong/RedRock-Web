@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>heart</title>
+    <style>
+        #heart {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -100%);
+        }
+
+        #heart::before,
+        #heart::after {
+            position: absolute;
+            content: "";
+            top: 0;
+            width: 100px;
+            height: 160px;
+            background: red;
+            /* border-radius: 100px 100px 0 0;  */
+            transition-duration: 3s;
+        }
+        #heart::before {
+            transform-origin: 0 100%;
+            /* transform: rotate(-45deg); */
+        }
+
+        #heart::after {
+            transform-origin: 100% 100%; 
+            /* transform: rotate(45deg);  */
+            left: 0px;
+        }
+        .text {
+            width: 100px;
+            height: 100px;
+            background: blueviolet;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="heart"></div>
+</body>
+
+</html>
