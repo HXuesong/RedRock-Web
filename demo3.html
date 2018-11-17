@@ -116,40 +116,25 @@
                 并将所有的可能放在一个数组中打印输出。
         */
 
-            function stringPermutations(str){
-                if (str.length === 0){
-                    console.log('Input again');
-                }
-                if (str.length === 1){
-                    console.log(str);
-                }
-                var arrayStr = str.split('');
-                var transArray = [];
-                transArray.push(arrayStr[0]);
-                var resultArray = [];
-
-                for (var i = 1; i < arrayStr.length; i++){
-
-                    resultArray = [];
-                    var addChar = arrayStr[i];
-                    for (var j = 0; j < transArray.length; j++){
-                        var toBeInsertStr = transArray[j];
-                        var toBeInsertStrArray = toBeInsertStr.split('');
-                        for (var k = 0; k <= transArray[j].length; k++){
-                            tempArray = toBeInsertStrArray.concat();
-                            var insertedArray = toBeInsertStrArray.splice(k, 0, addChar);
-                            var transArrayItem = toBeInsertStrArray.join('');
-                            resultArray.push(transArrayItem);
-                            toBeInsertStrArray = tempArray.concat();
-                        }
+        function stringPermutations(str) {
+            var result = [];    
+            if(str.length > 1) {
+                var left = str[0];
+                var rest = str.slice(1);
+                var preResult = stringPermutations(rest);
+                for(var i=0; i<preResult.length; i++) {
+                    for(var j=0; j<preResult[i].length + 1; j++) {
+                        var tmp = preResult[i].slice(0, j) + left + preResult[i].slice(j, preResult[i].length);
+                        result.push(tmp);
                     }
-                    transArray = [];
-                    transArray = resultArray.concat();
                 }
-                console.log(resultArray);
+            } else if (str.length == 1) {
+                return [str];
             }
+            return result;
+        }
 
-            stringPermutations('abcde');
+        console.log(stringPermutations('abc'));
 
     //17-计科-韩雪松
 
