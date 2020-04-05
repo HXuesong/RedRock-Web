@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+
+        window.onload = function () {
+
+            var odiv = document.querySelector("#time");
+
+            function go() {
+
+                var time1 = new Date();
+
+                var time2 = new Date(2019, 1, 22, 15, 50, 0);
+
+                var conS = Math.floor((time2.getTime() - time1.getTime()) / 1000);
+
+                var day = Math.floor(conS / 86400);
+
+                var hour = Math.floor(conS % 86400 / 3600);
+
+                var min = Math.floor(conS % 86400 % 3600 / 60);
+
+                var s = Math.floor(conS % 60);
+
+                var text = "距离2019年1月22日15点50分0秒还有" + day + "天" + hour + "时" + min + "分" + s + "秒";
+
+                odiv.innerHTML = text;
+
+            }
+            go();
+            var time = setInterval(go, 1000);
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <div id="time"></div>
+
+</body>
+
+</html>

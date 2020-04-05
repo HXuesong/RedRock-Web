@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>level1原生的call2函数</title>
+</head>
+
+<body>
+    <script>
+
+        function sayInfo(age) {
+            console.log("name:" + this.name)
+            console.log("age:" + age)
+        }
+        var user = {
+            name: "zzx"
+        }
+
+        // sayInfo.prototype.call2 = function(person, num) {
+        //    this = user;
+        //    age = num;
+        // }
+        
+        var say = new sayInfo();
+        say.call2(user, 100);
+    </script>
+</body>
+
+</html>

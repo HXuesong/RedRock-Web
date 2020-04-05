@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://csdnimg.cn/public/favicon.ico" type="image/x-icon">
+    <title>RedRock第五次作业Level1——数据可视化</title>
+    <style>
+        #box {
+            margin-top: 10px;
+            width: 1230px;
+            height: 450px;
+        }
+
+        #container {
+            width: 900px;
+            height: 30px;
+        }
+
+        span {
+            width: 30px;
+            height: 20px;
+            margin-left: 4px;
+            display: inline-block;
+            border: 2px solid rgba(160, 153, 228, 0.267);
+            text-align: center;
+            line-height: 20px;
+            font-size: 10px;
+            background: rgba(18, 167, 226, 0.493);
+            color: black;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: rgba(74, 68, 196, 0.651);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a :hover {
+            background: rgba(74, 68, 196, 0.651);
+        }
+
+        table {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Page1</h2>
+
+    <table width="600" border="1" cellspacing="0">
+        <thead>
+            <tr>
+                <th>班级</th>
+                <th>性别</th>
+                <th>专业</th>
+                <th>姓名</th>
+                <th>学号</th>
+            </tr>
+        </thead>
+        <tbody id="tbMain"></tbody>
+    </table>
+
+    <div id="container">
+
+        <a href="# ">
+            <span>上一页</span>
+        </a>
+        <a href="# ">
+            <span>1</span>
+        </a>
+        <a href="# ">
+            <span>2</span>
+        </a>
+        <a href="# ">
+            <span>3</span>
+        </a>
+        <a href="# ">
+            <span>4</span>
+        </a>
+        <a href="# ">
+            <span>5</span>
+        </a>
+        <a href="# ">
+            <span>6</span>
+        </a>
+        <a href="# ">
+            <span>7</span>
+        </a>
+        <a href="# ">
+            <span>8</span>
+        </a>
+        <a href="# ">
+            <span>9</span>
+        </a>
+        <a href="# ">
+            <span>10</span>
+        </a>
+        <a href="# ">
+            <span>下一页</span>
+        </a>
+
+    </div>
+
+    <script>
+
+        window.onload = function () {
+
+            //封装Ajax
+            function ajaxMy(options) {
+
+                let {
+                    url,
+                    type,
+                    data,
+                    dataType,
+                    success,
+                    fail
+            } = options;
+
+                type = type.toUpperCase();
+                let xhr = null;
+
+                //创建 xhr 对象
+                if (window.XMLHttpRequest) {
+                    xhr = new XMLHttpRequest();
+                } else {
+                    xhr = new ActiveXObject('Microsoft.XMLHTTP');
+                }
+
+                // 初始化并发送请求
+                if (type === 'GET') {
+
+                    // 处理 get 方式的 请求参数
+                    let requestParams = '?';
+
+                    for (let [key, value] of Object.entries(data)) {
+
+                        requestParams += `${key}=${value}&`;
+                    }
+                    requestParams = requestParams.slice(0, -1);
+
+                    xhr.open('GET', url + requestParams);
+                    xhr.send();
+
+                } else if (type === 'POST') {
+
+                    // 将请求数据 放到 请求主体中，并没有发送
+                    xhr.open("POST", options.url, true);
+                    //设置表单提交时的内容类型
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    // 发送请求
+                    xhr.send(data);
+
+                }
+
+                // 监听
+                xhr.onreadystatechange = function () {
+
+                    if (xhr.readyState === 4) {
+
+                        if (xhr.status >= 200 && xhr.status < 300) {
+                            success && success(JSON.parse(xhr.responseText));
+                        } else {
+                            fail && fail(xhr.status)
+                        }
+
+                    }
+                }
+            }
+
+            ///Ajax调用
+            ajaxMy({
+
+                type: 'GET',
+                url: 'https://api.tumiv.com/v2/cqupt/student?page=1&year=2015',
+                data: {},
+                success: function (response) {   //返回接受信息
+                    var per = response.result;  
+                    console.log(per);                 
+                }
+            })  
+
+        }
+
+    </script>
+
+</body>
+
+</html>

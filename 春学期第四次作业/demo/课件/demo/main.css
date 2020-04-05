@@ -1,0 +1,9 @@
+img {
+  float: left;
+}
+
+.clear::after {
+  content: "";
+  display: block;
+  clear: both;
+}

@@ -1,0 +1,22 @@
+
+
+body{
+    text-align: center;
+}
+.div1,.div2{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    font-size:30px;
+    line-height:40px;
+    text-align: center;
+    font-weight: bold;
+}
+.div1{
+    background-color: blue;  
+    margin-top: 10px;
+}
+.div2{
+    background-color: red;
+    margin-left:10px;
+}

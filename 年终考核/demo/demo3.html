@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function myReverse(str) {
+
+            var str2 = "";
+            for (var i = 0; i < str.length; i++) {
+                str2 += str.charAt(str.length - i - 1);
+            }
+            if(str2.charAt(0) == '0')
+                return str2.substring(1); 
+            else if(str2.charAt(str2.length - 1) == '-')
+                return '-' + str2.substring(0, str2.length - 1); 
+            else
+                return str2;
+        }
+
+        var str1 = myReverse("123");
+        var str2 = myReverse("120");
+        var str3 = myReverse("-123");
+        console.log(str1);
+        console.log(str2);
+        console.log(str3);
+
+    </script>
+</body>
+
+</html>

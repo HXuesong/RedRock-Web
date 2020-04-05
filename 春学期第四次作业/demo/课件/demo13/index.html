@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      img{
+        width: 200px;
+        height: 200px;
+      }
+      .crop {
+          width: 200px; height: 200px;
+          overflow: hidden;
+          position: relative;
+      }
+      .crop > .crop-area {
+          position: absolute; top:100px; left: 100px;
+          width: 80px; height: 80px;
+          outline: 200px solid rgba(0,0,0,.5);
+          cursor: move;
+      } 
+  </style>
+</head>
+<body>
+    <div class="crop">
+        <div id="cropArea" class="crop-area"></div>
+        <img src="../images/timg.jpeg">
+    </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dig</title>
+</head>
+
+<body>
+    <script>
+
+/*       
+        //dig 函数，给定任意一个对象作为函数的第一个参数，
+        //函数的第二个参数为该对象中的某个键名，
+        //通过这个键名可以直接输出对应的键值，
+        //不管对象里面的层级有多深
+
+        var data = {
+            level1: {
+                level2: {
+                    level3: 'some data'
+                }
+            }
+        }
+
+        function dig(obj, target) {
+            target in obj ? obj[target] : Object.values(obj).reduce(function (acc, val) {
+                if(a)
+            })
+        }
+
+        dig(data, 'level2') // { level3: 'some data' }
+        dig(data, 'level3') // 'some data'
+        dig(data, 'level4') // undefined
+*/
+
+/*
+        function displayInfo(args) {
+            var output = "";
+
+            if(typeof args.name == "string") {
+                output += "Name: " + args.name + "\n";
+            }
+
+            if (typeof args.age == "number") {
+                output += "Age: " + args.age + "\n";
+            }
+
+            alert(output);
+        }
+
+        displayInfo({
+            name: "Nicholas",
+            age: 29
+        });
+
+        displayInfo({
+            name: "Greg"
+        });
+*/
+
+        // var colors = ["red", "blue", "green"];
+        // alert(colors[0]);
+        // colors[2] = "black";
+        // alert(colors);
+        // colors[3] = "brown";
+        // alert(colors.length);
+
+        // var colors = ["red", "blue", "green"];
+        // colors[colors.length] = "black";
+        // colors[colors.length] = "brown";
+        // alert(colors);
+
+        // var colors = ["red", "blue", "green"];
+        // colors[99] = "black";
+        // alert(colors.length);
+
+/*
+        var person1 = {
+            toLocaleString: function() {
+                return "Nikolaos";
+            },
+
+            toString:  function() {
+                return "Nicholas";
+            }
+        };
+
+        var person2 = {
+            toLocaleString: function() {
+                return "Grigorios";
+            },
+
+            toString:  function() {
+                return "Greg";
+            }
+        };
+
+        var people = [person1, person2];
+        alert(people);
+        alert(people.toString());
+        alert(people.toLocaleString());
+*/
+
+        // var colors = ["red", "green", "blue"];
+        // alert(colors.join(","));
+        // alert(colors.join("||"));
+
+        // var data1 = new Date(2007, 0, 1);
+        // var data2 = new Date(2007, 1, 1);
+
+        // alert(data1 < data2);
+
+    </script>
+</body>
+
+</html>

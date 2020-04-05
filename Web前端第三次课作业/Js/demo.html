@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+</head>
+
+<body>
+    <script>
+        /* fsdf */
+
+        // xss
+
+        /**
+        *adadad
+        *ffrfer
+        */
+        /*
+
+        if(){
+        }else if{}else{}
+        
+        for(var i=0;i<10;i++){}
+        
+        while(condition){}
+
+        do{}
+        while()
+
+        switch(){
+            case 1:
+            do job1
+            break;
+            case 2:
+            do job2
+            break;
+            default:
+            do other job;
+        }
+
+        == ===
+        || && !
+        ?!
+
+        console.log();
+
+        string
+        number
+        boolean
+        null
+        undefined
+        symbol
+
+        模板字符串
+        var str1 = 'abc';
+        var str2 = 'def';
+        var str3 = `${str1}123${str2}`;
+        console.log(str3);
+
+        字符串操作
+        1.concat()
+        var hello="hello, ";
+        console.log(hello.concat("Kevin","aa","ccc"));
+        2.indexOf()
+        console.log("Bule Whale".indexOf("Whale"));
+        3.includes()
+        console.log('Bule Whale'.includes('B'));
+        4.replace()
+        var re = /apples/i;     i  gi
+        var str = "Apples are round, and apples are juicy.";
+        var newstr = str.replace(re, "oranges");
+        document.write(newstr);
+        5.slice            将下标在某区间的一段子串留下来
+        var str1 = 'The morning is upon us.';
+        var str2 = str1.slice(2,-5);
+        document.write(str2);
+        6.split()
+        document.write('Webkit 1 Moz 1 O 1 ms'.split(' 1'));
+        7.trim()         从字符串两端删除空白字符
+        var orig = '    foo  ';
+        document.write(orig);
+        8.substring()
+        var anyString = 'Mozilla';
+        console.log(anyString.substring(0,3));
+
+        number
+        1===1.0  true
+
+        bolean       true false
+        undefined    出现情况：没有被定义、没有被赋值
+        null
+
+        等价 '' "" undefined null false 0
+        if ('' || "" || undefined || null || false || 0) {
+        console.log('block 1')
+        } else {
+        console.log('block 2')
+        }
+        output undefined
+
+        引用类型（对象类型）
+        Object（对象）
+        Arry（数组）
+        Function（函数）
+
+        Object--数据类型
+        键名与键值(key-value)
+        var obj={
+            foo:'hello',bar:'world'
+        };
+        obj.baz = 'restrain';
+        delete obj.foo;
+        for(var key in obj){
+            console.log(key,obj[key]);
+        }
+
+        Array
+        var arr = ['a',6,true];
+        console.log(arr.length);
+
+        var entries = ['a','b','c'];
+        for(var i = 0;i < entries.length; i++){
+            console.log(entries[i]);
+        }          key in arr
+        for (var key in entries) {
+            console.log(key,entries[key]);
+        }          value of arr
+        for (var value of entries){
+            console.log(value);
+        }
+
+        var obj = {
+            0:'a',
+            1:'b',
+            2:'c',
+            length:3
+        }
+
+        数组操作
+        1.some()      依次执行数组中的每一个元素，检查数组中是否存在符合条件的元素
+        function isBiggerThan10(element, index, array) {
+            return element > 10;
+        }
+        console.log([2, 5, 8, 1, 4].some(isBiggerThan10));  
+        console.log([12, 5, 8, 1, 4].some(isBiggerThan10));
+        2.every()      所有元素都必须满足某一条件
+        function isBigEnough(element,index,array){
+            return (element >=10)
+        }
+        var passed = [12, 50, 80, 130, 44].every(isBigEnough)
+        console.log(passed);         true
+        3.filter()         将满足条件的元素置于一个新数组
+        function isBigEnough(element) {
+            return element >= 10;
+        }
+        var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+        console.log(filtered);         Array(3) [ 12, 130, 44 ]
+        4.find()        找到满足条件的第一个元素并返回其值
+        var inventory = [
+            {name: 'apples', quantity: 2},
+            {name: 'bananas', quantity: 0},
+            {name: 'cherries', quantity: 5}
+        ]
+        function findCherries(fruit) { 
+            return fruit.name === 'cherries';
+        }
+        console.log(inventory.find(findCherries));  
+        output: Object { name: "cherries", quantity: 5 }
+        5.map()   创建新数组，存放每个元素调用同一函数后的值
+        var numbers = [1, 4, 9];
+        var roots = numbers.map(Math.sqrt);
+        console.log(numbers);
+        console.log(roots);
+        output:Array(3) [ 1, 4, 9 ]
+               Array(3) [ 1, 2, 3 ]
+        6.forEach()
+        const items = ['item1', 'item2', 'item3'];
+        const copy = [];
+        items.forEach(function(item){copy.push(item)});
+        console.log(items);
+        7.join()          将数组中所有的元素连接成一个字符串并返回
+        var a = ['Wind', 'Rain', 'Fire']
+        var myVar1 = a.join()      // myVar1的值变为"Wind,Rain,Fire"
+        var myVar2 = a.join(', ')  // myVar2的值变为"Wind, Rain, Fire"
+        var myVar3 = a.join(' + ') // myVar3的值变为"Wind + Rain + Fire"
+        var myVar4 = a.join('')    // myVar4的值变为"WindRainFire"
+        8.push()    插入元素到数组末尾，并返回其新长度
+        var sports = ['basketball', 'tennis'];
+        var total = sports.push('footabll', 'swimming');
+        console.log(sports);
+        9.pop         删除最后一个元素，并使其长度减1
+        let myFish = ["angel", "clown", "mandarin", "surgeon"];
+        let popped = myFish.pop();
+        console.log(myFish);
+        10.shift()           删除数组第一个元素，并使其长度减1
+        let myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+        myFish.shift();
+        console.log(myFish) // ['clown', 'mandarin', 'surgeon'];
+        11.unshift()         将元素添加到数组开头
+        var arr = [1, 2];
+        arr.unshift(0);
+        console.log(arr);
+        // arr is [0, 1, 2]
+        12.reduce()      将数组中的所有元素简化为一个单值
+        var initialValue = 0;
+        var arr = [0, 1, 2, 3, 4];
+        arr.reduce(
+            function(accumulator, currentValue, currentIndex, array)
+            {
+                return accumulator + currentValue
+            }, initialValue)
+        console.log(arr);
+        13.reverse()   将数组中的元素位置颠倒  
+        var myArry = ['one', 'two', 'three'];
+        myArry.reverse();
+        console.log(myArry);   // ['three', 'two', 'one']   
+
+        Function 
+        function fool(){}
+        var foo = function(){}
+
+        function bar(x,y){
+            var a = x + y;
+            return a;
+        }
+        console.log(bar(6,8));   //14
+
+        函数传参与递归调用
+        function baz(n){
+            return n >10 ? n : baz(n + 1);
+        }
+        console.log(baz(0));
+
+        基本类型检测与引用类型的区别
+        基本类型的检测：typeof
+        console.log(typeof 'abc');
+        typeof null        "object"
+        typeof undefined   "undefined"
+        typeof Object      "function"   
+        typeof Function    "function
+
+        引用类型的检测：instanceof
+        var obj = {};
+        var arr = [];
+        var func = function() {};
+        console.log(obj instanceof Object);           true
+        console.log(arr instanceof Array);            true
+        console.log(func instanceof Function);        true
+
+        栈内存，堆内存
+        1.
+        var a = 123;
+        var b = a;
+        a = 456;
+        console.log(b);
+        console.log(a);                123
+        2.
+        var obj1 = { age: 18 };
+        var obj2 = obj1;
+        obj2.age = 22;
+        console.log(obj1.age);         22
+
+        作用域
+        LHS查询 与 RHS查询
+        全局作用域  函数作用域  块级作用域
+
+        词法作用域：取决于写代码时变量和块作用域写在哪里
+        var a = 'Berry';
+        function foo(){
+            console.log(a);
+        }
+        foo();                      Berry
+
+        var a = 'Berry';
+        function foo(){
+            var a = '123';
+            console.log(a);
+        }
+        foo();                      123
+
+        变量提升与函数提升
+        代码执行分为两个阶段：1.首先处理变量和函数在内的所有变量
+                            2.执行赋值、运算、函数执行等操作
+        变量提升->实质为变量声明提升，函数的赋值并未提升
+        console.log(a);
+        var a = 2;
+
+        var a;
+        console.log(a);
+        a = 2;
+
+        函数提升
+        foo(2,8);
+        function foo(x,y){
+        return x+y;
+        }
+
+        var a=2;
+        function foo(){
+            console.log(a);
+            var a=4;
+        }
+        foo();
+
+        function test(){
+            a=2;
+            var a;
+            console.log(a);   //2
+        }
+        test();
+
+        函数调用栈(Call Stack)
+        function multiply(x,y){
+            return x*y;
+        }
+        function printSquare(x){
+            var s=multiply(x,x);
+            console.log(s);
+        }
+        printSquare(5);               25 
+
+        throw new Error(')
+
+        function foo() {
+            throw new Error('SessionStack will help you resolve crashes')
+        }
+        function bar() {
+            foo();
+        }
+        function start() {
+            bar();
+        }
+        start();        Error: SessionStack will help you resolve crashes
+
+        堆栈溢出（递归函数）
+        function recusive(n) {
+            return recusive(n * 2);
+        }
+        recusive(2);      too much recursion 
+
+        arguments对象: 
+
+        function foo(a,b,c){
+            console.log(arguments[0]);
+            console.log(arguments[1]);
+            console.log(arguments[2]);
+            console.log(arguments[3]);
+            console.log(arguments.length);
+
+            console.log(typeof arguments)
+
+            var args = [];
+            for(var i=0; i<arguments.length;i++){
+                    args.push(arguments[i]);
+            }
+            console.log(args);
+        }
+
+        foo(1,2,3);               1 2 3 undefined 3 object Array(3) [ 1, 2, 3 ]
+
+        参数传递:
+        var a = 2;
+        function change(person, a) {
+            a = 4;
+            person.age = 18;
+            person = {
+                name: 'John',
+                age: 25
+            }
+            return person;
+        }
+        var person1 = {
+            name: 'Alex',
+            age: 30
+        }
+        var person2 = change(person1, a);
+        console.log(a);
+        console.log(person1);
+        console.log(person2);
+         2 
+         Object { name: "Alex", age: 18 }
+         Object { name: "John", age: 25 } 
+
+        闭包
+        function foo() {
+            var a = 123;
+            function bar() {
+                console.log(a);
+            }
+            return bar;
+        }
+        var fn = foo();
+        fn()                         123  
+
+        模块化机制       
+
+        function creatMyHero() {
+            var name = 'Flash';
+            var intro = 'I am the fastest man alive';
+            var skill = ['Speed Force', 'time travel', 'Lighting', 'Strike'];
+
+            function selfIntro() {
+                console.log(`The ${name} says that ${intro}`);
+            }
+
+            function skillAttack() {
+                console.log(`The ${name} use the ${skill[0]} and ${skill[1]} to the flash and ended the Reverse Flash with ${skill[2]}.`)
+            }
+
+            return {
+                name: name,
+                selfIntro: selfIntro,
+                skillAttack: skillAttack
+            }
+        }
+
+        var hero = creatMyHero();
+
+        hero.selfIntro();
+        hero.skillAttack();
+        
+        output:
+        The Flash says that I am the fastest man alive demo.
+        The Flash use the Speed Force and time travel to the flash and ended the Reverse Flash with Lighting.
+        */
+
+        // function permutate(str) {
+        //     //保存每一轮递归的排列结果
+        //     var result = [];
+        //     //初始条件：长度为1
+        //     if (str.length == 1) {
+        //         return [str]
+        //     } else {
+        //         //求剩余子串的全排列,对每个排列进行遍历
+        //         var preResult = permutate(str.slice(1));
+        //         for (var j = 0; j < preResult.length; j++) {
+        //             for (var k = 0; k < preResult[j].length + 1; k++) {
+        //                 //将首字母插入k位置  
+        //                 var temp = preResult[j].slice(0, k) + str[0] + preResult[j].slice(k);
+        //                 result.push(temp);
+        //             }
+        //         }
+        //         return result;
+        //     }
+        // }
+
+            
+        // function stringPermutations(str) {
+        //     var result = [];    
+        //     if(str.length > 1) {
+        //         var left = str[0];
+        //         var rest = str.slice(1);
+        //         var preResult = stringPermutations(rest);
+        //         for(var i=0; i<preResult.length; i++) {
+        //             for(var j=0; j<preResult[i].length + 1; j++) {
+        //                 var tmp = preResult[i].slice(0, j) + left + preResult[i].slice(j, preResult[i].length);
+        //                 result.push(tmp);
+        //             }
+        //         }
+        //     } else if (str.length == 1) {
+        //         return [str];
+        //     }
+        //     return result;
+        // }
+
+        // console.log(stringPermutations('abc'));
+
+
+
+        function dig(obj,target){
+
+        
+
+                    for(var name in obj){
+
+                        if(name == target) console.log(obj[name]);
+
+                        else{ 
+
+                            for(var key in name){
+                                
+                                var temp = typeof name[key];
+
+                                if(temp==="object"){
+
+                                    if(key == target) console.log(name[key]);
+
+                                    else dig(key,target);
+
+                                }          
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+        
+
+                var data = {
+
+                    level1: {
+
+                        level2: {
+
+                            level3: 'some data'
+
+                        }
+
+                    }
+
+                }
+
+                
+
+                dig(data,'level3');
+
+                // var data = {
+                //     level1: {
+                //         level2: {
+                //             level3: 'some data'
+                //         }
+                //     }
+                // }
+
+                // function dig(obj, target) {    
+                //     var props = target.split(".");    
+                //     for(var i=0;i<props.length;i++){        
+                //         var p = props[i];        
+                //         if(obj && obj.hasOwnProperty(p)){            
+                //             obj = obj[p];        
+                //         }else{            
+                //             return undefined;        
+                //         }    
+                //     }    
+                //     return obj;
+                // }
+
+
+                // console.log(dig(data,'level1.level2'));
+                
+            // const data = {
+            //     code: 42,
+            //     items: [
+            //     {
+            //         id: 1,
+            //         name: 'foo'
+            //     }, 
+            //     {
+            //         id: 2,
+            //         name: 'bar'
+            //     }
+            //     ]
+            // };
+
+
+            // function toArray(obj) {
+            //     const result = [];
+            //     for (const prop in obj) {
+            //         const value = obj[prop];
+            //         if (typeof value === 'object') {
+            //         result.push(toArray(value));
+            //         } else {
+            //         result.push(value);
+            //         }
+            //     }
+            //     return result;
+            //     }
+
+            //     console.log(toArray(data));                        
+
+    </script>
+</body>
+
+</html>

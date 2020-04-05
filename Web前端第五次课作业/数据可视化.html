@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://csdnimg.cn/public/favicon.ico" type="image/x-icon">
+    <title>RedRock第五次作业Level1——数据可视化</title>
+    <style>
+
+        #box {
+            margin-top: 10px;
+            width: 1230px;
+            height: 450px;
+        }
+
+        #container {
+            width: 900px;
+            height: 30px;
+        }
+
+        span {
+            width: 30px;
+            height: 20px;
+            margin-left: 4px;
+            display: inline-block;
+            border: 2px solid rgba(160, 153, 228, 0.267);
+            text-align: center;
+            line-height: 20px;
+            font-size: 10px;
+            background: rgba(18, 167, 226, 0.493);
+            color: black;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: rgba(74, 68, 196, 0.651);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        span:hover {
+            background: rgba(74, 68, 196, 0.651);
+        }
+
+        table {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Page1</h2>
+
+    <table width="600" border="1" cellspacing="0">
+        <thead>
+            <tr>
+                <th>班级</th>
+                <th>性别</th>
+                <th>专业</th>
+                <th>姓名</th>
+                <th>学号</th>
+            </tr>
+        </thead>
+        <tbody id="tbMain"></tbody>
+    </table>
+
+    <div id="container">
+
+
+            <span>上一页</span>
+
+        <a href="# ">
+            <span>1</span>
+        </a>
+        <a href="# ">
+            <span>2</span>
+        </a>
+        <a href="# ">
+            <span>3</span>
+        </a>
+        <a href="# ">
+            <span>4</span>
+        </a>
+        <a href="# ">
+            <span>5</span>
+        </a>
+        <a href="# ">
+            <span>6</span>
+        </a>
+        <a href="# ">
+            <span>7</span>
+        </a>
+        <a href="# ">
+            <span>8</span>
+        </a>
+        <a href="# ">
+            <span>9</span>
+        </a>
+        <a href="# ">
+            <span>10</span>
+        </a>
+        <a href="# ">
+            <span>下一页</span>
+        </a>
+
+    </div>
+
+    <script>
+
+        window.onload = function () {
+
+            XmlGetRequest(1);       //初始化
+            var tbody = document.querySelector('#tbMain');
+
+            function GetXHR() {
+                var xhr = null;
+                if (XMLHttpRequest) {
+                    xhr = new XMLHttpRequest();
+                } else {
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP ");
+                }
+                return xhr;
+            }
+
+            function XmlGetRequest(i) {
+
+                var xhr = GetXHR();                                             // 定义回调函数
+
+                xhr.onreadystatechange = function () {
+
+                    if (xhr.readyState == 4) {                                  // 已经接收到全部响应数据，执行以下操作
+                        var data = xhr.responseText;
+                        var per = JSON.parse(data).result;
+
+                        for (var i = 0; i < per.length; i++) {                  //遍历json数据 
+                            var trow = getDataRow(per[i]);                      //定义一个方法,返回tr数据 
+                            tbody.appendChild(trow);
+                        }
+
+                        function getDataRow(h) {
+                            var row = document.createElement('tr');             //创建行 
+
+                            var class_numCell = document.createElement('td');   //创建第一列id 
+                            class_numCell.innerHTML = h.class_num;              //填充数据 
+                            row.appendChild(class_numCell);                     //加入行 ，下面类似 
+
+                            var genderCell = document.createElement('td');      //创建第二列name 
+                            genderCell.innerHTML = h.gender;
+                            row.appendChild(genderCell);
+
+                            var jobCell = document.createElement('td');         //创建第三列job 
+                            jobCell.innerHTML = h.major;
+                            row.appendChild(jobCell);
+
+                            var nameCell = document.createElement('td');        //创建第四列job 
+                            nameCell.innerHTML = h.name;
+                            row.appendChild(nameCell);
+
+                            var student_numCell = document.createElement('td'); //创建第五列job 
+                            student_numCell.innerHTML = h.student_num;
+                            row.appendChild(student_numCell);
+
+                            return row;                                         //返回tr数据   
+                        }
+                    }
+                }
+                
+                //用数组存放网址
+                var aLink = [
+                    "https://api.tumiv.com/v2/cqupt/student?page=1&year=2015 ",
+                    "https://api.tumiv.com/v2/cqupt/student?page=2&year=2015 ",
+                    "https://api.tumiv.com/v2/cqupt/student?page=3&year=2015 ",
+                    "https://api.tumiv.com/v2/cqupt/student?page=4&year=2015 ",
+                    "https://api.tumiv.com/v2/cqupt/student?page=5&year=2015 ",
+                    "https://api.tumiv.com/v2/cqupt/student?page=6&year=2015 ",
+                    "https://api.tumiv.com/v2/cqupt/student?page=7&year=2015 ",
+                    "https://api.tumiv.com/v2/cqupt/student?page=8&year=2015 ",
+                    "https://api.tumiv.com/v2/cqupt/student?page=9&year=2015 ",
+                    "https://api.tumiv.com/v2/cqupt/student?page=10&year=2015 "
+                ];
+
+                xhr.open('get',`https://api.tumiv.com/v2/cqupt/student?page=${i+1}&year=2015` , true);
+                xhr.send();
+            }
+
+            //对分页键添加事件监听
+            var aLink = document.querySelectorAll("a");
+            var oP = document.querySelector("h2");
+            var num = 1;
+            for (let i = 1; i < aLink.length - 1; i++) {
+                aLink[i].addEventListener("click", function () {
+                    tbody.innerHTML = null;
+                    XmlGetRequest(i - 1);
+                    oP.innerHTML = `Page${i}`;
+                    num = i;
+                })
+            }
+            //上一页
+            aLink[0].addEventListener("click", function () {
+                if (num == 1) alert("没有上一页了！");
+                else {
+                    num--;
+                    tbody.innerHTML = null;
+                    XmlGetRequest(num - 1);
+                    oP.innerHTML = `Page${num}`;
+                }
+            })
+            //下一页
+            aLink[11].addEventListener("click", function () {
+                if (num == 10) alert("没有下一页了！");
+                else {
+                    ++num;
+                    tbody.innerHTML = null;
+                    XmlGetRequest(num - 1);
+                    oP.innerHTML = `Page${num}`;
+                }
+
+            })
+        }
+
+    </script>
+
+</body>
+
+</html>

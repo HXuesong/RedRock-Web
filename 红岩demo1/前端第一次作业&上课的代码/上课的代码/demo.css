@@ -1,0 +1,29 @@
+div {
+  background: red;
+  width: 100px;
+  height: 100px
+}
+
+h1#xxx {
+  color: blue
+}
+
+#a {
+  background: green
+}
+
+#a p {
+  color: red
+}
+
+#a>p {
+  color: red
+}
+
+.cc {
+  background: yellow
+}
+
+[haha="hehe"] {
+  background: black
+}

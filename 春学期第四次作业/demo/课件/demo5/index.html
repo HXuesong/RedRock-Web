@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+  <script src="main.js"></script>
+  <style>
+    div {
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+    }
+    img {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    img::after {
+        /* 生成 alt 信息 */
+        content: attr(alt);
+        /* 尺寸和定位 */
+        position: absolute; left: 0;bottom: 0;right: 0;
+        /* 颜色 */
+        background-color: rgba(0,0,0,.5);
+        /* alt 信息隐藏 */
+        transform: translateY(90%);
+        /* 过渡动画效果 */
+        transition: transform .2s;
+        }
+    img:hover::after {
+        transform: translateY(0);
+    } 
+
+  </style>
+</head>
+<body>
+  <div>
+    <img src="../images/timg3.jpeg" alt="hhhh">
+  </div>
+</body>
+</html>
